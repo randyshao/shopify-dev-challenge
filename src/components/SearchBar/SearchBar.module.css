@@ -1,7 +1,7 @@
 .container {
   display: flex;
   align-items: center;
-  background-color: rgb(228, 239, 241);
+  background-color: #eaf2f3;
   border-radius: 9px;
   padding-left: 16px;
 }
@@ -16,5 +16,5 @@
 }
 
 .search::placeholder {
-  color: rgb(192, 192, 192);
+  color: #aab3ae;
 }
