@@ -55,3 +55,9 @@
   cursor: pointer;
   background-color: #147a76;
 }
+
+.row button:disabled {
+  background-color: #c4c4c4;
+  cursor: not-allowed;
+  color: grey;
+}
