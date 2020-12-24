@@ -42,7 +42,7 @@
 .row button {
   border: none;
   border-radius: 4px;
-  background-color: #19a5a0;
+  background-color: #c43256;
   color: #fff;
   outline: none;
   transition: 150ms ease-in-out;
@@ -53,5 +53,5 @@
 
 .row button:hover {
   cursor: pointer;
-  background-color: #147a76;
+  background-color: #7d1c34;
 }

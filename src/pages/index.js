@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchList from '../components/SearchList/SearchList';
+import NominationList from '../components/NominationList/NominationList';
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -35,11 +36,13 @@ export default function Home() {
     <title>Movie Nominator App</title>
     <link rel='icon' href='/favicon.ico' />
   </Head>;
+
   return (
     <Layout>
       <div>
         <SearchBar getQuery={(q) => setQuery(q)} />
         <SearchList movies={results} />
+        <NominationList />
       </div>
     </Layout>
   );

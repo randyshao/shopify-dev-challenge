@@ -11,6 +11,7 @@ const SearchList = ({ movies }) => {
         <div className={styles.row} key={movie.imdbID}>
           <h3 className={styles.name}>{movie.Title}</h3>
           <h3 className={styles.year}>{movie.Year}</h3>
+          <button>Nominate</button>
         </div>
       ))}
     </div>
