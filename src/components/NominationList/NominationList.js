@@ -3,7 +3,7 @@ import styles from './NominationList.module.css';
 import { NominationsContext } from '../../context/NominationsContext';
 
 const NominationList = () => {
-  const { nominations } = useContext(NominationsContext);
+  const { nominations, removeNomination } = useContext(NominationsContext);
   console.log(nominations);
 
   return (
@@ -15,9 +15,11 @@ const NominationList = () => {
       </div>
       {nominations.map((nomination) => (
         <div className={styles.row} key={nomination.imdbID}>
-          <h3 className={styles.name}>{nomination.Title}</h3>
-          <h3 className={styles.year}>{nomination.Year}</h3>
-          <button>Remove</button>
+          <h3 className={styles.name}>{nomination.title}</h3>
+          <h3 className={styles.year}>{nomination.year}</h3>
+          <button onClick={() => removeNomination(nomination.imdbID)}>
+            Remove
+          </button>
         </div>
       ))}
     </div>
