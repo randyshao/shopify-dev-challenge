@@ -4,11 +4,6 @@ import { NominationsContext } from '../../context/NominationsContext';
 
 const NominationList = () => {
   const { nominations, removeNomination } = useContext(NominationsContext);
-
-  if (nominations.length === 5) {
-    console.log('You made the max number of nominations!');
-  }
-
   let banner;
 
   if (nominations.length === 5) {

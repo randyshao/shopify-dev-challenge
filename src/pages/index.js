@@ -43,13 +43,12 @@ export default function Home() {
     );
   }
 
-  <Head>
-    <title>Movie Nominator App</title>
-    <link rel='icon' href='/favicon.ico' />
-  </Head>;
-
   return (
     <Layout>
+      <Head>
+        <title>The Shoppies - Movie Nominator</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <div>
         <SearchBar getQuery={(q) => setQuery(q)} />
         {banner}
