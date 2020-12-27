@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { NominationsContext } from '../context/NominationsContext';
 import styles from '../styles/Home.module.css';
 import Layout from '../components/Layout/Layout';
 import axios from 'axios';
@@ -8,6 +9,7 @@ import SearchList from '../components/SearchList/SearchList';
 import NominationList from '../components/NominationList/NominationList';
 
 export default function Home() {
+  const { nominations } = useContext(NominationsContext);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const APIKey = 'f71dc30f';
@@ -19,7 +21,6 @@ export default function Home() {
           `http://www.omdbapi.com/?s=${query}&apikey=${APIKey}`
         );
         const movies = res.data.Search;
-        console.log(movies);
         if (movies === undefined) {
           setResults([]);
         } else {
@@ -32,6 +33,16 @@ export default function Home() {
     fetchMovies();
   }, [query]);
 
+  let banner;
+
+  if (nominations.length === 5) {
+    banner = (
+      <div className={styles.maxBanner}>
+        You have reached the max number of nominations!
+      </div>
+    );
+  }
+
   <Head>
     <title>Movie Nominator App</title>
     <link rel='icon' href='/favicon.ico' />
@@ -41,24 +52,12 @@ export default function Home() {
     <Layout>
       <div>
         <SearchBar getQuery={(q) => setQuery(q)} />
-        <SearchList movies={results} />
-        <NominationList />
+        {banner}
+        <div className={styles.lists}>
+          <SearchList movies={results} />
+          <NominationList />
+        </div>
       </div>
     </Layout>
   );
 }
-
-// export const getServerSideProps = async () => {
-//   const APIKey = 'f71dc30f';
-
-//   const res = await axios.get(
-//     `http://www.omdbapi.com/?s=star+wars&apikey=${APIKey}`
-//   );
-//   const movies = await res.data;
-
-//   return {
-//     props: {
-//       movies,
-//     },
-//   };
-// };

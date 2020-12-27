@@ -20,8 +20,10 @@ const SearchResult = ({ movie }) => {
     }
   }, [nominations]);
 
+  let notification;
+
   const nominationSubmit = (movie) => {
-    if (nominations.length <= 4) {
+    if (nominations.length < 5) {
       const newNomination = {
         imdbID: movie.imdbID,
         title: movie.Title,
@@ -30,7 +32,9 @@ const SearchResult = ({ movie }) => {
       addNomination(newNomination);
       setDisabled(true);
     } else {
-      console.log('not allowed!');
+      alert(
+        'You have reached the maximum amount of nominations on your list. Please remove a nomination to add another one.'
+      );
     }
   };
   return (
@@ -40,6 +44,7 @@ const SearchResult = ({ movie }) => {
       <button disabled={disabled} onClick={() => nominationSubmit(movie)}>
         Nominate
       </button>
+      {notification}
     </div>
   );
 };
