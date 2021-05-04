@@ -12,13 +12,14 @@ export default function Home() {
   const { nominations } = useContext(NominationsContext);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const APIKey = 'f71dc30f';
+  // const APIKey = 'f71dc30f';
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const res = await axios.get(
-          `https://www.omdbapi.com/?s=${query}&apikey=${APIKey}`
+          `https://www.omdbapi.com/?s=${query}&apikey=` +
+            process.env.NEXT_PUBLIC_APIKEY
         );
         const movies = res.data.Search;
         if (movies === undefined) {
